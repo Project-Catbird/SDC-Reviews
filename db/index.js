@@ -6,17 +6,17 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 const db = new Client({
   user: process.env.DB_USERNAME,
-  database: "postgres_database_development",
+  database: process.env.DB_DATABASENAME,
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,
   dialect: 'postgres',
-  port: process.env.PORT
+  port: process.env.DB_PORT
 });
 
 
 db.connect()
 .then(() => {
-  console.log('database connected!')
+  console.log('database connected at '+ process.env.DB_PORT);
 })
 .catch((err) => {
   console.log(err);
